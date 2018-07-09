@@ -5,9 +5,10 @@ module.exports = app => {
     STRING,
     UUID,
     UUIDV1,
-
+    TEXT,
+    DATE,
   } = app.Sequelize;
-  const Banner = app.model.define('depot', {
+  const Depot = app.model.define('depot', {
     _id: {
       type: UUID,
       default: UUIDV1,
@@ -23,11 +24,20 @@ module.exports = app => {
       type: STRING(64),
     },
     description: {
-      type: STRING(256),
+      type: TEXT,
     },
     position: {
       type: STRING(32),
     },
+    createdAt: {
+      type: DATE,
+    },
+    updatedAt: {
+      type: DATE,
+    },
+  },
+  {
+    timestamps: false,
   });
-  return Banner;
+  return Depot;
 };
